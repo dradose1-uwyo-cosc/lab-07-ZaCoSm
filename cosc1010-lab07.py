@@ -1,8 +1,8 @@
-# Your Name Here
+# Zack Smith 
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# 10/31/2024
+# Lab 07
+# Lab Section: 13
 # Sources, people worked with, help given to: 
 # your
 # comments
@@ -18,10 +18,41 @@
 # You will continue to prompt the user until a proper integer value is entered
 
 factorial = 1
+while factorial > 0:
+    answer = 0
+    num = input("Please enter something you would like to facrtorial: ")
+    
+    if num.isnumeric() != True or int(num)< 0:
+        while num.isnumeric() != True or int(num) < 0:
+            num = input("Please enter a valid bound: ")
+            
+    else:
+        num = int(num)
+        answer = num
+        while num > 1:
+            answer = answer * (num - 1)
+            num = num - 1
+        print(answer)
+    factorial = factorial - 1
+    
 
-print(f"The result of the factorial based on the given bound is {factorial}")
+    
+    stayInt = 1
+    sumItUp = 0
+    while stayInt != 0:
+        exString = input("please enter an integer value that you would like to add up or say exit if you would like to stop: ")
+        if exString.isnumeric():
+            sumItUp += int(exString)
+        elif ("-" in exString):
+            exString = exString.replace("-","")
+            int(exString)
+            sumItUp -= int(exString)
+        elif (exString.lower() == "exit"):
+            print(f"Your final sum is {sumItUp}")
+            stayInt = 0
+        
 
-print("*"*75)
+
 # Create a while loop that prompts a user for input of an integer values
 # Sum all inputs. When the user enters 'exit' (regardless of casing) end the loop
 # Upon ending the loop print the sum
@@ -37,11 +68,11 @@ print("*"*75)
 # All this together means you will have an intensive while loop that includes multiple if statements, likely with some nesting 
 # The sum should start at 0 
 
-num_sum = 0 
 
-print(f"Your final sum is {num_sum}")
 
-print("*"*75)
+
+
+
 # Now you will be creating a two operand calculator
 # It will support the following operators: +,-,/,*,% 
 # So accepted input is of the form `operand operator operand` 
@@ -58,5 +89,26 @@ print("*"*75)
     # So, it should function the same for `5 + 6` as `5+6`
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
-
-        
+exInt = 1
+while exInt != 0:
+    numString = ""
+    equation = input("enter an equation you would like to be solved : ")
+    answer = 0
+    for i in equation:
+        if i.isnumeric():
+            numString += i
+    for j in equation:
+        if j.isnumeric() != True:
+            if j == "+":
+                answer = int(numString[0:1]) + int(numString[1:])
+            elif j == "-":
+                answer = int(numString[0:1]) - int(numString[1:])
+            elif j == "/":
+                answer = int(numString[0:1]) / int(numString[1:])
+            elif j == "*":
+                answer = int(numString[0:1]) * int(numString[1:])
+            elif j == "%":
+                answer = int(numString[0:1]) % int(numString[1:])
+    print(answer)
+    if equation == "exit":
+        exInt = 0
